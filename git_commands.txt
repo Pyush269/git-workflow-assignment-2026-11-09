@@ -1,0 +1,129 @@
+GIT COMMAND DOCUMENTATION
+Project: git-workflow-assignment
+Repository: https://github.com/Pyush269/git-workflow-assignment-2026-11-09
+
+Commands are listed in order, including repeated verification commands.
+Run repository commands from the project folder in PowerShell.
+HTML and text files were created or edited with local scripts; these are not Git commands.
+GitHub repository creation used the GitHub REST API after the local workflow was complete.
+Authentication output is intentionally excluded from evidence.
+
+Environment note: elevated Git processes use a process-only safe.directory setting for this exact project path.
+An initial staging attempt failed on cross-user ownership; it made no repository change and was repeated successfully.
+
+01. git init -b main
+    Initialize the local project with main as the initial branch, before creating a GitHub repository.
+
+02. git status --short --branch
+    Show the current branch and untracked or modified files.
+
+03. git add index.html about.html
+    Stage both HTML pages for the initial commit.
+
+04. git commit -m 'Initial commit: add home and about pages'
+    Record the initial state of the two-page project.
+
+05. git diff -- index.html
+    Inspect the unstaged home-page modification before committing it.
+
+06. git add index.html
+    Stage the home-page changes.
+
+07. git commit -m 'Update home page with workflow introduction'
+    Create the second commit with the modified home-page introduction.
+
+08. git branch feature
+    Create a branch named feature at the current commit.
+
+09. git switch feature
+    Switch the working tree to the feature branch.
+
+10. git diff -- about.html
+    Inspect the learning-outcomes section added on feature.
+
+11. git add about.html
+    Stage the feature branch changes to the about page.
+
+12. git commit -m 'Add learning outcomes on feature branch'
+    Record the about-page enhancement on feature.
+
+13. git switch main
+    Return to main before integrating the feature.
+
+14. git merge --no-ff feature -m 'Merge feature branch into main'
+    Merge feature with an explicit merge commit so branch activity remains visible in history.
+
+15. git log --graph --oneline --decorate --all
+    Display all commits and branch pointers as a graph, including the merge.
+
+16. git add .gitignore
+    Stage ignore rules for all .log files and the temp folder.
+
+17. git commit -m 'Ignore log files and temporary folder'
+    Commit the ignore rules.
+
+18. git check-ignore -v debug.log temp/sample.txt
+    Verify which .gitignore rule excludes each demonstration file.
+
+19. git status --short --ignored
+    Show ignored files with !! while checking for pending tracked changes.
+
+20. git ls-files
+    List tracked files and verify ignored demonstration files are absent.
+
+21. git add index.html
+    Stage the experimental banner that will be undone.
+
+22. git commit -m 'Add experimental banner for undo demonstration'
+    Create an additional commit to demonstrate a safe undo operation.
+
+23. git show --stat HEAD
+    Show the additional commit and the file it changed before undoing it.
+
+24. git revert --no-edit HEAD
+    Undo the most recent commit with a new inverse commit, retaining both commits in history.
+
+25. git diff 'HEAD~2' HEAD -- index.html
+    Compare the page before the experimental commit with the page after its revert; empty output proves restoration.
+
+26. git status --short --branch
+    Verify main has no pending tracked changes after the revert.
+
+27. git log --graph --oneline --decorate --all
+    Show the local history after branching, merging, ignoring, and reverting.
+
+28. git credential fill
+    Retrieve the existing GitHub credential privately for API authentication; input is protocol=https and host=github.com. Credential values are not saved in the evidence or repository.
+
+29. git add README.md git_commands.txt
+    Stage the project notes and the complete Git command documentation.
+
+30. git credential fill
+    Retrieve the existing GitHub credential privately for API authentication; input is protocol=https and host=github.com. Credential values are not saved in the evidence or repository.
+
+31. git add README.md git_commands.txt
+    Stage the project notes and the complete Git command documentation.
+
+32. git commit -m 'Document Git commands and completed workflow'
+    Commit the command documentation and project notes.
+
+33. git remote add origin https://github.com/Pyush269/git-workflow-assignment-2026-11-09.git
+    Connect the completed local repository to the new empty public GitHub repository.
+
+34. git push -u origin main
+    Push main and its complete history to GitHub and set its upstream tracking branch.
+
+35. git push origin feature
+    Publish the feature branch pointer so GitHub also exposes the branch explicitly.
+
+36. git remote -v
+    Display the configured GitHub fetch and push URLs.
+
+37. git ls-remote --heads origin
+    Read the branch tips advertised by GitHub and verify both main and feature exist remotely.
+
+38. git log --graph --oneline --decorate --all
+    Display the complete local and remote branch history after publishing.
+
+39. git status --short --branch
+    Verify a clean tracked working tree and main tracking origin/main after the push.
